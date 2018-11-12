@@ -13,6 +13,8 @@ online shopping system is a [DBMS project] with both admin and user layouts.
 7>select file [online-shopping-system-advanced/database/onlinesho.sql].
 5>edit file in folder online-shopping-system-advanced/db.php.
 ```
+
+##Screenshots
 ![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/adduser.png)
 ![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/adminproductadd.png)
 ![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/cartpage.png)
