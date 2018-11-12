@@ -20,13 +20,13 @@
   </button>
   <ul class="dropdown-menu" style="width:240px">
     <li><a href="clothes_list.php"><strong>Clothes List</strong> </a></li>
- <li><a href="cosmetics_list.php"><strong> Cosmetics List</strong></a></li>
+ <li><a href="cosmetics_list.php"><strong> Electronic List</strong></a></li>
    </ul></li>
 
  
 
 <li><button style="width:240px; height:50px" type="button" class="btn btn-default btn-primary" onClick="location.href='manage_users.php'"> <span class="glyphicon glyphicon-edit pull-left"></span> Manage Users </button></li>	
-<li><button style="width:240px; height:50px" type="button" class="btn btn-default btn-danger" onClick="location.href='logout.php'"><span class="glyphicon glyphicon-off pull-left">
+<li><button style="width:240px; height:50px" type="button" class="btn btn-default btn-danger" onClick="location.href='../logout.php'"><span class="glyphicon glyphicon-off pull-left">
 </span> Logout </button></li>
 			  </ul>
 		  </div>

@@ -1,6 +1,7 @@
 <?php
 
 include("../db.php");
+session_start();
 
 
 if(isset($_POST['submit']))
@@ -24,9 +25,9 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 	if($picture_size<=50000000)
 	
 		$pic_name=time()."_".$picture_name;
-		move_uploaded_file($picture_tmp_name,"../product_images".$pic_name);
+		move_uploaded_file($picture_tmp_name,"../product_images/".$pic_name);
 		
-mysqli_query($con,"insert into products (product_name, details, image, price, c_price, product_type, brand, tags) values ('$product_name','$details','$pic_name','$price','$c_price','$product_type','$brand','$tags')") or die ("query incorrect");
+mysqli_query($con,"insert into products (product_cat, product_brand,product_title,product_price, product_desc, product_image,product_keywords) values ('$product_type','$brand','$product_name','$price','$details','$pic_name','$tags')") or die ("query incorrect");
 
  header("location: sumit_form.php?success=1");
 }
@@ -74,21 +75,18 @@ mysqli_close($con);
       <div class="input-group-addon">Rs</div>
       <input type="text" class="form-control" name="price" id="price"  placeholder="0.00" required>
     </div><br>
-<p>Compare at price</p>
-<div class="input-group">
-      <div class="input-group-addon">Rs</div>
-      <input type="text" name="c_price" id="c_price" class="form-control" placeholder="0.00">
-    </div>
+
+
     </div>
         </div>  
         <div class="col-lg-5">
         <div class="well">
 <h3>Category</h3>  
 <p>Product type</p>
-<input type="text" name="product_type" id="product_type" class="form-control" placeholder="Shirt, T-Shirt">
+<input type="number" name="product_type" id="product_type" class="form-control" placeholder="1 electronic,2 Ladies Wears,3 Mens Wear">
 <br>
 <p>Vendor / Brand</p>
-<input type="text" name="brand" id="brand" class="form-control" placeholder="Polo, Nike">
+<input type="number" name="brand" id="brand" class="form-control" placeholder="1 HP,2 Samsung,3 Apple,4 motorolla">
 <br>
 <p>Other tags</p>
 <input type="text" name="tags" id="tags" class="form-control" placeholder="Summer, Soft, Cotton etc">
