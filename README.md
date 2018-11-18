@@ -9,9 +9,12 @@ online shopping system is a [DBMS project] with both admin and user layouts.
 3>Download project from github(https://github.com/PuneethReddyHC/online-shopping-system-advanced.git).
 4>extract files in C:\\xampp\htdocs\.
 5> open link localhost/phpmyadmin
-6>import
-7>select file [online-shopping-system-advanced/database/onlinesho.sql].
-5>edit file in folder online-shopping-system-advanced/db.php.
+6>click on import
+7>select file [online-shopping-system-advanced/database/onlineshop.sql].
+8>edit file in folder online-shopping-system-advanced/db.php.
+9>open any browser and type http://localhost/online-shopping-system-advanced-master.
+10>first register and then login
+11>admin login details  Email=admin@gmail.com and Password=123456789.
 ```
 
 ## Screenshots
