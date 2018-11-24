@@ -422,6 +422,7 @@ if (isset($_POST["Common"])) {
 							<td><a href="store.php" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
 							<td class="hidden-xs text-center"><b class="net_total" style="font-size:20px;"></b></td>
+                            <div id="issessionset"></div>
 							';
 				if (!isset($_SESSION["uid"])) {
 					echo '
@@ -429,17 +430,15 @@ if (isset($_POST["Common"])) {
                     <td><input type="submit" name="login_user_with_product" class="btn btn-success btn-block" value="Ready to Checkout"></td>
 						</tr>
 					</tfoot>
-				</table>
-</div>
-							</form>';
-					
-				}else if(isset($_SESSION["uid"])){
+				
+							</form></table></div>';
+                }else if(isset($_SESSION["uid"])){
 					//Paypal checkout form
 					echo '
 						</form>
-						<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+						<form action="checkout.php" method="post">
 							<input type="hidden" name="cmd" value="_cart">
-							<input type="hidden" name="business" value="shoppingcart@khanstore.com">
+							<input type="hidden" name="business" value="shoppingcart@puneeth.com">
 							<input type="hidden" name="upload" value="1">';
 							  
 							$x=0;
@@ -455,14 +454,12 @@ if (isset($_POST["Common"])) {
 								}
 							  
 							echo   
-								'<input type="hidden" name="return" value="http://localhost/myfiles/Khanstore/payment_success.php"/>
-					                <input type="hidden" name="notify_url" value="http://localhost/myfiles/Khanstore/payment_success.php">
-									<input type="hidden" name="cancel_return" value="http://localhost/myfiles/Khanstore/cancel.php"/>
+								'<input type="hidden" name="return" value="http://localhost/myfiles/public_html/payment_success.php"/>
+					                <input type="hidden" name="notify_url" value="http://localhost/myfiles/public_html/payment_success.php">
+									<input type="hidden" name="cancel_return" value="http://localhost/myfiles/public_html/cancel.php"/>
 									<input type="hidden" name="currency_code" value="USD"/>
 									<input type="hidden" name="custom" value="'.$_SESSION["uid"].'"/>
-									<input style="float:right;margin-right:80px;" type="image" name="submit"
-										src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-rect-paypalcheckout-60px.png" alt="PayPal Checkout"
-										alt="PayPal - The safer, easier way to pay online">
+									<input type="submit" id="submit" name="login_user_with_product" name="submit" class="btn btn-success" value="Ready to Checkout">
                                         
 								</form>';
 				}
