@@ -3,7 +3,7 @@
 online shopping system is a [DBMS project] with both admin and user layouts.
 
 ## Installation
-```bash
+
 1>Install XAMPP or WAMPP.
 2>Open XAMPP Control panal and start [apache] and [mysql] .
 3>Download project from github(https://github.com/PuneethReddyHC/online-shopping-system-advanced.git).
@@ -15,7 +15,7 @@ online shopping system is a [DBMS project] with both admin and user layouts.
 9>open any browser and type http://localhost/online-shopping-system-advanced-master.
 10>first register and then login
 11>admin login details  Email=admin@gmail.com and Password=123456789.
-```
+
 
 ## Screenshots
 ![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/adduser.png)
