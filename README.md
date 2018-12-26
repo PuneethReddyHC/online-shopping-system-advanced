@@ -34,6 +34,12 @@ online shopping system is a [DBMS project] with both admin and user layouts.
 
 13>admin login details  Email=admin@gmail.com and Password=123456789.
 
+## visit my other repository with beautiful admin pages with below link
+
+  https://github.com/PuneethReddyHC/online-shopping-system-with-advanced-admin-page
+
+## If you like my project hit a start
+
 
 ## Screenshots
 ![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/adduser.png)
