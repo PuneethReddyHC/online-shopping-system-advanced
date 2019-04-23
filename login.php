@@ -13,15 +13,15 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
 	$sql = "SELECT * FROM user_info WHERE email = '$email' AND password = '$password'";
 	$run_query = mysqli_query($con,$sql);
 	$count = mysqli_num_rows($run_query);
-    
-	//if user record is available in database then $count will be equal to 1
-	if($count == 1){
-		$row = mysqli_fetch_array($run_query);
+    $row = mysqli_fetch_array($run_query);
 		$_SESSION["uid"] = $row["user_id"];
 		$_SESSION["name"] = $row["first_name"];
 		$ip_add = getenv("REMOTE_ADDR");
 		//we have created a cookie in login_form.php page so if that cookie is available means user is not login
-            
+        
+	//if user record is available in database then $count will be equal to 1
+	if($count == 1){
+		   	
 			if (isset($_COOKIE["product_list"])) {
 				$p_list = stripcslashes($_COOKIE["product_list"]);
 				//here we are decoding stored json product list cookie to normal array
@@ -44,13 +44,24 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
 				setcookie("product_list","",strtotime("-1 day"),"/");
 				//if user is logging from after cart page we will send cart_login
 				echo "cart_login";
+				
+				
 				exit();
 				
 			}
 			//if user is login from page we will send login_success
 			echo "login_success";
-       
-            echo "<script> location.href='index.php'; </script>";
+			$BackToMyPage = $_SERVER['HTTP_REFERER'];
+				if(!isset($BackToMyPage)) {
+					header('Location: '.$BackToMyPage);
+					echo"<script type='text/javascript'>
+					
+					</script>";
+				} else {
+					header('Location: index.php'); // default page
+				} 
+				
+			
             exit;
 
 		}else{
@@ -72,7 +83,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
                     //if user is login from page we will send login_success
                     echo "login_success";
 
-                    echo "<script> location.href='admin/add_product.php'; </script>";
+                    echo "<script> location.href='admin/addproduct.php'; </script>";
                     exit;
 
                 }else{

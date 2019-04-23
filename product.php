@@ -58,6 +58,7 @@ include "header.php";
 					<?php 
 								include 'db.php';
 								$product_id = $_GET['p'];
+								
 								$sql = " SELECT * FROM products ";
 								$sql = " SELECT * FROM products WHERE product_id = $product_id";
 								if (!$con) {
@@ -161,14 +162,14 @@ include "header.php";
 								<div class="qty-label">
 									Qty
 									<div class="input-number">
-										<input type="number">
+										
 										<span class="qty-up">+</span>
 										<span class="qty-down">-</span>
 									</div>
 								</div>
 								<div class="btn-group" style="margin-left: 25px; margin-top: 15px">
-								<button class="add-to-cart-btn" href="cart.php?mycart='.$row['product_id'].'"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                <button class="add-to-cart-btn" style="border-color: dodgerblue" href="checkout.php?p='.$row['product_id'].'"> Checkout</button></div>
+								<button class="add-to-cart-btn" pid="'.$row['product_id'].'"  id="product" ><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                </div>
 								
 								
 							</div>

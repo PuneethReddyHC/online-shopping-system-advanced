@@ -208,10 +208,10 @@ session_start();
 							<div class="header-ctn">
 								<!-- Wishlist -->
 								<div>
-									<a href="#">
-										<i class="fa fa-heart-o"></i>
-										<span>Your Wishlist</span>
-										<div class="qty">2</div>
+									<a href="https://github.com/puneethreddyhc">
+										<i class="fa fa-github"></i>
+										<span>Github</span>
+										
 									</a>
 								</div>
 								<!-- /Wishlist -->
@@ -228,13 +228,10 @@ session_start();
 										
 											
 										</div>
-										<div class="cart-summary">
-											<small>3 Item(s) selected</small>
-											<h5>SUBTOTAL: $2940.00</h5>
-										</div>
+										
 										<div class="cart-btns">
-											<a href="cart.php">View Cart</a>
-											<a href="checkout.php">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+												<a href="cart.php" style="width:100%;"><i class="fa fa-edit"></i>  edit cart</a>
+											
 										</div>
 									</div>
 										
@@ -275,7 +272,7 @@ session_start();
 		
 		<div class="modal fade" id="Modal_login" role="dialog">
                         <div class="modal-dialog">
-
+													
                           <!-- Modal content-->
                           <div class="modal-content">
                             <div class="modal-header">
@@ -291,7 +288,7 @@ session_start();
                             </div>
                             
                           </div>
-
+													
                         </div>
                       </div>
                 <div class="modal fade" id="Modal_register" role="dialog">

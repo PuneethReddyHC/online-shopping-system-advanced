@@ -165,7 +165,7 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 	}else {
         
 		$keyword = $_POST["keyword"];
-        
+        header('Location:store.php');
 		$sql = "SELECT * FROM products,categories WHERE product_cat=cat_id AND product_keywords LIKE '%$keyword%'";
        
 	}
@@ -315,6 +315,7 @@ if (isset($_POST["Common"])) {
 		//display cart item in dropdown menu
 		if (mysqli_num_rows($query) > 0) {
 			$n=0;
+			$total_price=0;
 			while ($row=mysqli_fetch_array($query)) {
                 
 				$n++;
@@ -324,6 +325,7 @@ if (isset($_POST["Common"])) {
 				$product_image = $row["product_image"];
 				$cart_item_id = $row["id"];
 				$qty = $row["qty"];
+				$total_price=$total_price+$product_price;
 				echo '
 					
                     
@@ -345,7 +347,7 @@ if (isset($_POST["Common"])) {
             
             echo '<div class="cart-summary">
 				    <small class="qty">'.$n.' Item(s) selected</small>
-				    <h5 class="net_total"></h5>
+				    <h5>$'.$total_price.'</h5>
 				</div>'
             ?>
 				
@@ -361,18 +363,22 @@ if (isset($_POST["Common"])) {
     if (isset($_POST["checkOutDetails"])) {
 		if (mysqli_num_rows($query) > 0) {
 			//display user cart item with "Ready to checkout" button if user is not login
-			echo '<div class="container main main-raised ">
-	               <table id="cart" class="table table-hover table-condensed">
+			echo '<div class="main ">
+			<div class="table-responsive">
+			<form method="post" action="login_form.php">
+			
+	               <table id="cart" class="table table-hover table-condensed" id="">
     				<thead>
 						<tr>
 							<th style="width:50%">Product</th>
 							<th style="width:10%">Price</th>
 							<th style="width:8%">Quantity</th>
-							<th style="width:22%" class="text-center">Subtotal</th>
+							<th style="width:7%" class="text-center">Subtotal</th>
 							<th style="width:10%"></th>
 						</tr>
 					</thead>
-                    <form method="post" action="login_form.php">';
+					<tbody>
+                    ';
 				$n=0;
 				while ($row=mysqli_fetch_array($query)) {
 					$n++;
@@ -385,17 +391,22 @@ if (isset($_POST["Common"])) {
 
 					echo 
 						'
-                            
-                            
-                             <tbody>
+                             
 						<tr>
-							<td data-th="Product">
+							<td data-th="Product" >
 								<div class="row">
-									<div class="col-sm-2 hidden-xs"><img src="product_images/'.$product_image.'" style="height: 70px;width:75px;"/></div>
-									<div class="col-sm-10">
-										<h4 class="nomargin product-name header-cart-item-name"><a href="#">'.$product_title.'</a></h4>
-										<p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+								
+									<div class="col-sm-4 "><img src="product_images/'.$product_image.'" style="height: 70px;width:75px;"/>
+									<h4 class="nomargin product-name header-cart-item-name"><a href="product.php?p='.$product_id.'">'.$product_title.'</a></h4>
 									</div>
+									<div class="col-sm-6">
+										<div style="max-width=50px;">
+										<p>Greek 99% (official), English, French	11,128,404	43.2	131,956
+										Luxembourg	Luxermbourgish (national) French, German (both administrative)	</p>
+										</div>
+									</div>
+									
+									
 								</div>
 							</td>
                             <input type="hidden" name="product_id[]" value="'.$product_id.'"/>
@@ -406,36 +417,42 @@ if (isset($_POST["Common"])) {
 							</td>
 							<td data-th="Subtotal" class="text-center"><input type="text" class="form-control total" value="'.$product_price.'" readonly="readonly"></td>
 							<td class="actions" data-th="">
-								<button class="btn btn-info btn-sm update" update_id="'.$product_id.'"><i class="fa fa-refresh"></i></button>
-								<button class="btn btn-danger btn-sm remove" remove_id="'.$product_id.'"><i class="fa fa-trash-o"></i></button>								
+							<div class="btn-group">
+								<a href="#" class="btn btn-info btn-sm update" update_id="'.$product_id.'"><i class="fa fa-refresh"></i></a>
+								
+								<a href="#" class="btn btn-danger btn-sm remove" remove_id="'.$product_id.'"><i class="fa fa-trash-o"></i></a>		
+							</div>							
 							</td>
 						</tr>
-					</tbody>
+					
                             
                             ';
 				}
 				
-				echo '
-                        <tfoot>
-						
-						<tr>
-							<td><a href="store.php" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-							<td colspan="2" class="hidden-xs"></td>
-							<td class="hidden-xs text-center"><b class="net_total" style="font-size:20px;"></b></td>
-                            <div id="issessionset"></div>
+				echo '</tbody>
+				<tfoot>
+					
+					<tr>
+						<td><a href="store.php" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+						<td colspan="2" class="hidden-xs"></td>
+						<td class="hidden-xs text-center"><b class="net_total" ></b></td>
+						<div id="issessionset"></div>
+                        <td>
+							
 							';
 				if (!isset($_SESSION["uid"])) {
 					echo '
-                    
-                    <td><input type="submit" name="login_user_with_product" class="btn btn-success btn-block" value="Ready to Checkout"></td>
-						</tr>
-					</tfoot>
+					
+							<a href="" data-toggle="modal" data-target="#Modal_login" class="btn btn-success">Ready to Checkout</a></td>
+								</tr>
+							</tfoot>
 				
-							</form></table></div>';
+							</table></div></div>';
                 }else if(isset($_SESSION["uid"])){
 					//Paypal checkout form
 					echo '
-						</form>
+					</form>
+					
 						<form action="checkout.php" method="post">
 							<input type="hidden" name="cmd" value="_cart">
 							<input type="hidden" name="business" value="shoppingcart@puneeth.com">
@@ -447,7 +464,9 @@ if (isset($_POST["Common"])) {
 							while($row=mysqli_fetch_array($query)){
 								$x++;
 								echo  	
-									'<input type="hidden" name="item_name_'.$x.'" value="'.$row["product_title"].'">
+
+									'<input type="hidden" name="total_count" value="'.$x.'">
+									<input type="hidden" name="item_name_'.$x.'" value="'.$row["product_title"].'">
 								  	 <input type="hidden" name="item_number_'.$x.'" value="'.$x.'">
 								     <input type="hidden" name="amount_'.$x.'" value="'.$row["product_price"].'">
 								     <input type="hidden" name="quantity_'.$x.'" value="'.$row["qty"].'">';
@@ -460,8 +479,14 @@ if (isset($_POST["Common"])) {
 									<input type="hidden" name="currency_code" value="USD"/>
 									<input type="hidden" name="custom" value="'.$_SESSION["uid"].'"/>
 									<input type="submit" id="submit" name="login_user_with_product" name="submit" class="btn btn-success" value="Ready to Checkout">
-                                        
-								</form>';
+									</form></td>
+									
+									</tr>
+									
+									</tfoot>
+									
+							</table></div></div>    
+								';
 				}
 			}
 	}
