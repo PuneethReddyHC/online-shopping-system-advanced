@@ -207,17 +207,55 @@ $(document).ready(function(){
 			}
 		})
 	})
+	
+	$("#checkout_form").on("submit",function(event){
+		event.preventDefault();
+		$(".overlay").show();
+		$.ajax({
+			url : "checkout_process.php",
+			method : "POST",
+			data : $("#checkout_form").serialize(),
+			success : function(data){
+				$(".overlay").hide();
+				if (data == "Continue Shopping") {
+					window.location.href = "cart.php";
+				}else{
+					$("#checkout_msg").html(data);
+				}
+				
+			}
+		})
+	})
+    
+    $("#offer_form").on("submit",function(event){
+		event.preventDefault();
+		$(".overlay").show();
+		$.ajax({
+			url : "offersmail.php",
+			method : "POST",
+			data : $("#offer_form").serialize(),
+			success : function(data){
+				$(".overlay").hide();
+				$("#offer_msg").html(data);
+				
+			}
+		})
+	})
+    
+    
+    
 	//Get User Information before checkout end here
 
 	//Add Product into Cart
 	$("body").delegate("#product","click",function(event){
 		var pid = $(this).attr("pid");
+		
 		event.preventDefault();
 		$(".overlay").show();
 		$.ajax({
 			url : "action.php",
 			method : "POST",
-			data : {addToCart:1,proId:pid},
+			data : {addToCart:1,proId:pid,},
 			success : function(data){
 				count_item();
 				getCartItem();

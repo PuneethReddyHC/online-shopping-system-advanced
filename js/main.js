@@ -11,8 +11,10 @@
 	$('.cart-dropdown').on('click', function (e) {
 		e.stopPropagation();
 	});
-
+	
+	
 	/////////////////////////////////////////
+	
 
 	// Products Slick
 	$('.products-slick').each(function() {
@@ -100,8 +102,10 @@
 		$('#product-main-img .product-preview').zoom();
 	}
 
-	/////////////////////////////////////////
 
+	
+	/////////////////////////////////////////
+	
 	// Input number
 	$('.input-number').each(function() {
 		var $this = $(this),
@@ -164,5 +168,7 @@
 			handle ? priceInputMax.value = value : priceInputMin.value = value
 		});
 	}
+
+	
 
 })(jQuery);
