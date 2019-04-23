@@ -208,24 +208,6 @@ $(document).ready(function(){
 		})
 	})
 	
-	$("#checkout_form").on("submit",function(event){
-		event.preventDefault();
-		$(".overlay").show();
-		$.ajax({
-			url : "checkout_process.php",
-			method : "POST",
-			data : $("#checkout_form").serialize(),
-			success : function(data){
-				$(".overlay").hide();
-				if (data == "Continue Shopping") {
-					window.location.href = "cart.php";
-				}else{
-					$("#checkout_msg").html(data);
-				}
-				
-			}
-		})
-	})
     
     $("#offer_form").on("submit",function(event){
 		event.preventDefault();
