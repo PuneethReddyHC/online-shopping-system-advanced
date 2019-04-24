@@ -9,15 +9,7 @@
 				<!-- row -->
 				
                 <div class="container-fluid">
-					<div class="login-marg">
-						<!-- Billing Details -->
-						<div class="row">
-                            <div class="col-md-2"></div>
-                            <div class="col-md-8" id="signup_msg">
-                                <!--Alert from signup form-->
-                            </div>
-                            <div class="col-md-2"></div>
-                        </div>
+					
 						
 						
 						<!-- /Billing Details -->
@@ -64,13 +56,21 @@
                                        </a>
                                         
                                     </div>
-                                        
+                                    
+                                
+								</form>
+                                <div class="login-marg">
+						<!-- Billing Details -->
+						<div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8" id="signup_msg">
                                     
 
                                 </div>
-                                
-								</form>
-							
+                                <!--Alert from signup form-->
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
 
 						
 					</div>
