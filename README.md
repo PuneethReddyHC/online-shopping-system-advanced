@@ -28,7 +28,7 @@ online shopping system is a [DBMS project] with both admin and user layouts.
 
 10>browse the file in directory [online-shopping-system-advanced/database/onlineshop.sql].
 
-11>open any browser and type http://localhost/online-shopping-system-advanced-master.
+11>open any browser and type http://localhost/online-shopping-system-advanced.
 
 12>first register and then login
 
