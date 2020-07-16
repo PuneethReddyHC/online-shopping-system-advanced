@@ -42,19 +42,55 @@ $page1=($page*10)-10;
 <div class='table-responsive'>  
 <div style="overflow-x:scroll;">
 <table class="table  table-hover table-striped" style="font-size:18px">
-<tr><th>Customer Name</th><th>Products</th><th>Contact | Email</th><th>Address</th><th>Details</th><th>Shipping</th><th>Time</th></tr>
-<?php 
-$result=mysqli_query($con,"select order_id, product_title, first_name, mobile, email, address1, address2, product_price,address2, qty from orders,products,user_info where orders.product_id=products.product_id and user_info.user_id=orders.user_id Limit $page1,10")or die ("query 1 incorrect.....");
+<tr><th>Customer Name</th><th>Products</th><th>Contact | Email</th><th>Address</th><th>amount</th><th>quantity</th><th></th></tr>
+<?php
+                      $query = "SELECT * FROM orders_info";
+                      $run = mysqli_query($con,$query);
+                      if(mysqli_num_rows($run) > 0){
 
-while(list($order_id,$p_names,$cus_name,$contact_no,$email,$address,$country,$details,$zip_code,$time,$quantity)=mysqli_fetch_array($result))
-{	
-echo "<tr><td>$cus_name</td><td>$p_names</td><td>$email<br>$contact_no</td><td>$address<br>ZIP: $zip_code<br>$country</td><td>$details</td><td>$quantity</td><td>$time</td>
+                       while($row = mysqli_fetch_array($run)){
+                         $order_id = $row['order_id'];
+                         $email = $row['email'];
+                         $f_name = $row['f_name'];
+                         $address = $row['address'];
+                         $total_amount = $row['total_amt'];
+                         $user_id = $row['user_id'];
+                         $qty = $row['prod_count'];
 
-<td>
-<a class=' btn btn-success' href='orders.php?order_id=$order_id&action=delete'>Delete</a>
-</td></tr>";
-}
-?>
+                      ?>
+                          <tr>
+                            <td><?php 
+                               echo $f_name;
+
+                             ?></td>
+                           <td> <?php
+                            $query1 = "SELECT * FROM order_products where order_id = $order_id";
+                            $run1 = mysqli_query($con,$query1); 
+                              while($row1 = mysqli_fetch_array($run1)){
+                               $product_id = $row1['product_id'];
+
+                               $query2 = "SELECT * FROM products where product_id = $product_id";
+                               $run2 = mysqli_query($con,$query2);
+
+                               while($row2 = mysqli_fetch_array($run2)){
+                               $product_title = $row2['product_title'];
+                           ?>
+                              <?php echo $product_title ?><br>
+                            <?php }}?></td>
+                            <td><?php echo $email ?></td>
+                            <td><?php echo $address ?></td>
+                            <td><?php echo $total_amount ?></td>
+                            <td><?php echo $qty ?></td>
+                            <td></td>
+                         </tr>
+                         <?php } ?>
+                        
+                     <?php
+                   }else {
+                     echo "<center><h2>No users Available</h2><br><hr></center>";
+                     }
+                  ?>
+                  
 </table>
 </div></div>
 <nav align="center"> 
