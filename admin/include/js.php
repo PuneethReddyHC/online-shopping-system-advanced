@@ -13,5 +13,5 @@ $(function () {
   	});
   });
 </script>
-<script src="style/js/jquery-1.11.1.min.js"></script>
+<script src="style/js/jquery.min.js"></script>
 <script src="style/js/bootstrap.min.js"></script>
