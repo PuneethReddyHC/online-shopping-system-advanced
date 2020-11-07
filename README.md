@@ -1,3 +1,5 @@
+> ## Updated project with extra Features like WISHLIST, List Orders, add Reviews, updated routing, resolved search bug is available for Premium 
+
 > ### Any DBMS OR WEB TECHNOLOGIES (php, django, angular or react) or MachineLearning projects with installation support and code explaination for Premium contact phone: +919535688928 gmail: puneethreddy951@gmail.com
 
 # online shopping system advanced
