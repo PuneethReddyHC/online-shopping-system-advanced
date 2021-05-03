@@ -30,7 +30,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getcat` (IN `cid` INT)  SELECT * FR
 
 DELIMITER ;
 
--- --------------------------------------------------------
+-- -------------------------------------------------------------
 
 --
 -- Table structure for table `admin_info`
