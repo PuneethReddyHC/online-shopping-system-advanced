@@ -106,7 +106,7 @@ ul, ol {
 }
 
 .primary-btn:hover, .primary-btn:focus {
-  opacity: 0.9;
+  opacity: 0.5;
   color: #FFF;
 }
 
