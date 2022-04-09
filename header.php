@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 
 <!DOCTYPE html>
@@ -122,19 +121,19 @@ session_start();
 			<div id="top-header">
 				<div class="container">
 					<ul class="header-links pull-left">
-						<li><a href="#"><i class="fa fa-phone"></i> +91-9535688928</a></li>
-						<li><a href="#"><i class="fa fa-envelope-o"></i> puneethreddy951@gmail.com</a></li>
-						<li><a href="#"><i class="fa fa-map-marker"></i>Bangalore</a></li>
+						<li><a href="#"><i class="fa fa-phone"></i> +91-1609912435</a></li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i> rajeshveer@gmail.com</a></li>
+						<li><a href="https://www.google.com/maps/dir//IIIT+Nuzvid+Campus,+Nuzividu,+Andhra+Pradesh+521202/@16.7911985,80.7875342,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3a3675e5f312c661:0xab7189f421622491!2m2!1d80.8225538!2d16.7911193"><i class="fa fa-map-marker"></i>Nuzvid</a></li>
 					</ul>
 					<ul class="header-links pull-right">
 						<li><a href="#"><i class="fa fa-inr"></i> INR</a></li>
 						<li><?php
                              include "db.php";
-                            if(isset($_SESSION["uid"])){
+							 if(isset($_SESSION["uid"])){
                                 $sql = "SELECT first_name FROM user_info WHERE user_id='$_SESSION[uid]'";
                                 $query = mysqli_query($con,$sql);
                                 $row=mysqli_fetch_array($query);
-                                
+                               // echo '<pre>';print_r($row);echo '</pre>';die();
                                 echo '
                                <div class="dropdownn">
                                   <a href="#" class="dropdownn" data-toggle="modal" data-target="#myModal" ><i class="fa fa-user-o"></i> HI '.$row["first_name"].'</a>
@@ -146,6 +145,7 @@ session_start();
                                 </div>';
 
                             }else{ 
+								
                                 echo '
                                 <div class="dropdownn">
                                   <a href="#" class="dropdownn" data-toggle="modal" data-target="#myModal" ><i class="fa fa-user-o"></i> My Account</a>
