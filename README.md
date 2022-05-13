@@ -98,7 +98,19 @@
 12. admin login details  Email=admin@gmail.com and Password=123456789.
 
 ## Screenshots
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/adduser.png)
+![Image of adduser](https://github.com/bagussatoto/Endolita-OnlineShop/blob/master/assets/dasboard.png)
+![Image of adduser](https://github.com/bagussatoto/Endolita-OnlineShop/blob/master/assets/halaman%202.png)
+![Image of adduser](https://github.com/bagussatoto/Endolita-OnlineShop/blob/master/assets/harga%20laptop.png
+![Image of adduser](https://github.com/bagussatoto/Endolita-OnlineShop/blob/master/assets/harga.png)
+![Image of adduser](https://github.com/bagussatoto/Endolita-OnlineShop/blob/master/assets/login.png)
+![Image of adduser](https://github.com/bagussatoto/Endolita-OnlineShop/blob/master/assets/pembayaran.png)
+![Image of adduser](https://github.com/bagussatoto/Endolita-OnlineShop/blob/master/screenshot/adduser.png)
+![Image of adduser](https://github.com/bagussatoto/Endolita-OnlineShop/blob/master/screenshot/manageuser.pngg)
+![Image of adduser](https://github.com/bagussatoto/Endolita-OnlineShop/blob/master/screenshot/adminproductadd.png)
+![Image of adduser](https://github.com/bagussatoto/Endolita-OnlineShop/blob/master/screenshot/productlistadmin.png)
+![Image of adduser](https://github.com/bagussatoto/Endolita-OnlineShop/blob/master/screenshot/storepage.png)
+
+
 
 
 ## Request Fitur Baru dan Pelaporan Bug
