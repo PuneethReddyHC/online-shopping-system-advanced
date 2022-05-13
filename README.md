@@ -1,14 +1,33 @@
 ![GitHub](https://img.shields.io/github/license/puneethreddyhc/online-shopping-system-advanced)
 ![](https://visitor-badge.glitch.me/badge?page_id=puneethreddyhc.onlineadv)
 
-<a href="https://www.buymeacoffee.com/puneethreddyhc" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="195" height="55"></a>
+<a href="https://saweria.co/bagussatoto1" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="195" height="55"></a>
 
-> ## Updated project with extra Features like WISHLIST, List Orders, add Reviews, updated routing, resolved search bug is available for Premium 
+> ## 👦🏽 Siapa pembuat aplikasi ini?
 
-[![Youtube Video](https://img.youtube.com/vi/gLwfj67GI8A/0.jpg)](https://youtu.be/gLwfj67GI8A)
+| Profile        |  Keterangan                      |
+|----------------|----------------------------------|
+| Nama           | Bagus Budi Satoto                |
+| Jurusan        | S1 - Informatika                 |
+| Kampus         | Universitas Amikom Yogyakarta    |
+
+> ## 🧑🏽‍💻 Social Media
+
+<div>
+      <p><i class="fas fa-envelope-open-text"></i><a href="mailto:" target="_blank"> Mail : bagusbudi1308@gmail.com</a></p>   
+      <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/082136094607"> Wa.Business : Bagus
+      <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/08988325547"> Wa.Pribadi : Bagus Satoto
+      <p><i class="fab fa-github"></i> <a href="https://github.com/bagussatoto"> Github : Bagus Budi Satoto</a></p>  
+      <p><i class="fab fa-facebook"></i> <a href="https://www.facebook.com/bagussatoto1"> Facebook : Bagus Budi Satoto</a></p>
+      <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/bagus_satoto1"> Instagram : Bagus Budi Satoto</a></p>    
+      <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/bagussatoto/"> Linkedin : Bagus Budi Satoto</a></p>
+      <p><i class="fab fab-paypal"></i> <a href="https://www.PayPal.Me/bagussatoto1"> PayPal : Bagus Budi Satoto </a></p>
+      
+</div>
 
 
-<h3>Things I code with</h3>
+
+> <h3>Menggunakan Bahasa Pemprograman Apa Saja</h3>
 <p>
   <img alt="npm" src="https://img.shields.io/badge/-NPM-CB3837?style=flat-square&logo=npm&logoColor=white" />
   <img alt="html5" src="https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" />
@@ -32,7 +51,8 @@
   <img alt="TypeScript" src="https://img.shields.io/badge/-TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white" />
   
 </p>
-<h1>Projects We develop</h1>
+
+> <h1>Projects Didalamnya</h1>
 
 <ul>
 	<li><b>Vue JS</b></li>
@@ -44,11 +64,6 @@
 	<li><b>React JS</b></li>
 	<li><b>AI/ML</b></li>
 </ul>
-<h2> Projects with installation support and code explaination for Premium contact phone: +919535688928 gmail: puneethreddy951@gmail.com or visit :<a href="http://www.projectswall.com/">Projects Wall</a></h2>
-
-# online shopping system advanced
-
-online shopping system is a [DBMS project] with both admin and user layouts.
 
 ## Installation
 
@@ -56,13 +71,13 @@ online shopping system is a [DBMS project] with both admin and user layouts.
 
 2. Open XAMPP Control panal and start [apache] and [mysql] .
 
-3. Download project from github(https://github.com/PuneethReddyHC/online-shopping-system-advanced.git).
+3. Download project from github(https://github.com/bagussatoto/Endolita-OnlineShop.git).
  
  OR follow gitbash commands
 
     i>cd C:\\xampp\htdocs\
 
-    ii>git clone https://github.com/PuneethReddyHC/online-shopping-system-advanced.git
+    ii>git clone https://github.com/bagussatoto/Endolita-OnlineShop.git
 
 4. extract files in C:\\xampp\htdocs\.
 
@@ -74,55 +89,26 @@ online shopping system is a [DBMS project] with both admin and user layouts.
 
 8. after creating database name click on import.
 
-9. browse the file in directory [online-shopping-system-advanced/database/onlineshop.sql].
+9. browse the file in directory [OnlineShop/database/shopping.sql].
 
-10. open any browser and type http://localhost/online-shopping-system-advanced-master.
+10. open any browser and type http://localhost/onlineshop.
 
 11.first register and then login
 
 12. admin login details  Email=admin@gmail.com and Password=123456789.
 
-## If you like my project 
-   Bye me Cup of coffee
-
-### Google pay or phonepay number 9535688928
-
-## visit my other repository with beautiful admin pages with below link
-
-  https://github.com/PuneethReddyHC/online-shopping-system-with-advanced-admin-page
-  
-  https://github.com/PuneethReddyHC/event-management/
-
-## If you like my project hit a start
-
-
 ## Screenshots
 ![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/adduser.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/adminproductadd.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/cartpage.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/homepage.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/loginmodal.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/mainpage.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/manageuser.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/manageuseradmin.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/productlistadmin.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/productpage.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/productzoom.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/register modal.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/searchfilter.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/searchpage.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/store.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/storepage.png)
-![Image of adduser](https://github.com/PuneethReddyHC/online-shopping-system-advanced/blob/master/screenshot/storepage1.png)
 
 
+## Request Fitur Baru dan Pelaporan Bug
 
+Anda dapat meminta fitur baru maupun melaporkan bug melalui menu **issues** yang sudah disediakan oleh GitHub (lihat menu di atas), posting issues baru dan kita akan berdiskusi disana.
 
+## Berkontribusi
 
+Siapapun dapat berkontribusi pada proyek ini mulai dari pemrograman, pembuakan buku manual, sampai dengan mengenalkan produk ini kepada Mahasiswa 
+Untuk belajar agar mengurangi kesenjangan pendidikan teknologi dengan cara membuat postingan issue di repository ini.
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
 
 
