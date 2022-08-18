@@ -4,14 +4,14 @@ include("../db.php");
 error_reporting(0);
 if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
 {
-$order_id=$_GET['order_id'];
+$order_id=strip_tags(mysqli_real_escape_string($con, $_GET['order_id']));
 
 /*this is delet query*/
 mysqli_query($con,"delete from orders where order_id='$order_id'")or die("delete query is incorrect...");
 } 
 
 ///pagination
-$page=$_GET['page'];
+$page=strip_tags(mysqli_real_escape_string($con,$_GET['page']));
 
 if($page=="" || $page=="1")
 {

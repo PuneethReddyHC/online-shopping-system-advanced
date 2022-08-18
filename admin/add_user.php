@@ -4,13 +4,13 @@ include("../db.php");
 
 if(isset($_POST['btn_save']))
 {
-$first_name=$_POST['first_name'];
-$last_name=$_POST['last_name'];
-$email=$_POST['email'];
-$user_password=$_POST['user_password'];
-$mobile=$_POST['mobile'];
-$address1=$_POST['address1'];
-$address2=$_POST['address2'];
+$first_name=strip_tags(mysqli_real_escape_string($con,$_POST['first_name']));
+$last_name=strip_tags(mysqli_real_escape_string($con,$_POST['last_name']));
+$email=strip_tags(mysqli_real_escape_string($con,$_POST['email']));
+$user_password=strip_tags(mysqli_real_escape_string($con,$_POST['user_password']));
+$mobile=strip_tags(mysqli_real_escape_string($con,$_POST['mobile']));
+$address1=strip_tags(mysqli_real_escape_string($con,$_POST['address1']));
+$address2=strip_tags(mysqli_real_escape_string($con,$_POST['address2']));
 
 mysqli_query($con,"insert into user_info(first_name, last_name,email,password,mobile,address1,address2) values ('$first_name','$last_name','$email','$user_password','$mobile','$address1','$address2')") 
 			or die ("Query 1 is inncorrect........");

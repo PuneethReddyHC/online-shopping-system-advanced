@@ -26,7 +26,7 @@ session_start();
 		<h3>
 <?php  //success message
 if(isset($_POST['success'])) {
-$success = $_POST["success"];
+$success = strip_tags(mysqli_real_escape_string($con,$_POST["success"]));
 echo "<h1 style='color:#0C0'>Your Product was added successfully &nbsp;&nbsp;  <span class='glyphicon glyphicon-ok'></h1></span>";
 }
 ?></h3>

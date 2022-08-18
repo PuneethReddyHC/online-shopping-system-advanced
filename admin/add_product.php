@@ -3,21 +3,22 @@
 include("../db.php");
 session_start();
 
+
 if(isset($_POST['submit']))
 {
-$product_name=strip_tags($_POST['product_name']);
-$details=strip_tags($_POST['details']);
-$price=strip_tags($_POST['price']);
-$c_price=strip_tags($_POST['c_price']);
-$product_type=strip_tags($_POST['product_type']);
-$brand=strip_tags($_POST['brand']);
-$tags=strip_tags($_POST['tags']);
+$product_name=$_POST['product_name'];
+$details=$_POST['details'];
+$price=$_POST['price'];
+$c_price=$_POST['c_price'];
+$product_type=$_POST['product_type'];
+$brand=$_POST['brand'];
+$tags=$_POST['tags'];
 
 //picture coding
-$picture_name=strip_tags($_FILES['picture']['name']);
-$picture_type=strip_tags($_FILES['picture']['type']);
-$picture_tmp_name=strip_tags($_FILES['picture']['tmp_name']);
-$picture_size=strip_tags($_FILES['picture']['size']);
+$picture_name=$_FILES['picture']['name'];
+$picture_type=$_FILES['picture']['type'];
+$picture_tmp_name=$_FILES['picture']['tmp_name'];
+$picture_size=$_FILES['picture']['size'];
 
 if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="image/png" || $picture_type=="image/gif")
 {

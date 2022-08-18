@@ -4,7 +4,7 @@ include("../db.php");
 error_reporting(0);
 if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
 {
-$product_id=$_GET['product_id'];
+$product_id=strip_tags(mysqli_real_escape_string($con,$_GET['product_id']));
 ///////picture delete/////////
 $result=mysqli_query($con,"select product_image from products where product_id='$product_id")
 or die("query is incorrect...");
@@ -23,7 +23,7 @@ mysqli_query($con,"delete from products where product_id='$product_id'")or die("
 } 
 
 ///pagination
-$page=$_GET['page'];
+$page=strip_tags(mysqli_real_escape_string($con,$_GET['page']));
 
 if($page=="" || $page=="1")
 {

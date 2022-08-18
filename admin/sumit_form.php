@@ -1,5 +1,5 @@
 <?php
-$link=$_REQUEST['success'];
+$link=strip_tags(mysqli_real_escape_string($con,$_REQUEST['success']));
 ?>
 <html>
 <head>

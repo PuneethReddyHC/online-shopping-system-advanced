@@ -3,7 +3,7 @@
 include("../db.php");
 if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
 {
-$user_id=$_GET['user_id'];
+$user_id=strip_tags(mysqli_real_escape_string($con,$_GET['user_id']));
 
 /*this is delet quer*/
 mysqli_query($con,"delete from user_info where user_id='$user_id'")or die("query is incorrect...");
@@ -41,7 +41,7 @@ $result=mysqli_query($con,"select user_id, email, password from user_info")or di
 while(list($user_id,$user_name,$user_password)=
 mysqli_fetch_array($result))
 {
-echo "<tr><td>$user_name</td><td>$user_password</td>";
+echo "<tr><td>$user_name</td><td>".$user_password."</td>";
 
 echo"<td>
 <a href='edit_user.php?user_id=$user_id'>Edit</a>
