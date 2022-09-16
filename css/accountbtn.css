@@ -1,0 +1,30 @@
+
+
+.dropdownn {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdownn-content {
+    display: none;
+    position: absolute;
+    background-color: #15161D;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdownn-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdownn-content a:hover {background-color: #15161D}
+
+.dropdownn:hover .dropdownn-content {
+    display: block;
+}
+
+
