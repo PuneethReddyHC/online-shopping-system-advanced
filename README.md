@@ -45,38 +45,37 @@
 </ul>
 <h2> Projects with installation support and code explaination for Premium contact gmail: puneethreddy951@gmail.com or visit :<a href="http://www.projectswall.com/">Projects Wall</a></h2>
 
-# Installation
+## Installation
 
-1. Install XAMPP or WAMPP.
+*1.* Install XAMPP or WAMPP.
 
-2. Open XAMPP Control panal and start [apache] and [mysql] .
+*2.* Open XAMPP Control panal and start [apache] and [mysql] .
 
-3. Download project from github(https://github.com/PuneethReddyHC/online-shopping-system-with-advanced-admin-page.git)  
-    OR follow gitbash commands
-    
-    i>cd C:\\xampp\htdocs\
-    
-    ii>git clone https://github.com/PuneethReddyHC/online-shopping-system-with-advanced-admin-page.git
-    
-4. extract files in C:\\xampp\htdocs\.
+*3.* Download project from github(https://github.com/PuneethReddyHC/online-shopping-system-with-advanced-admin-page.git) OR follow gitbash commands:
+```
+git clone https://github.com/PuneethReddyHC/online-shopping-system-with-advanced-admin-page.git
+cd online-shopping-system-with-advanced-admin-page
+```
 
-5. open link localhost/phpmyadmin
+*4.* extract files in C:\\xampp\htdocs\.
 
-6. click on new at side navbar.
+*5.* open link localhost/phpmyadmin
 
-7. give a database name as (onlineshop) hit on create button.
+*6.* click on new at side navbar.
 
-8. after creating database name click on import.
+*7.* give a database name as (onlineshop) hit on create button.
 
-9. browse the file in directory[online-shopping-system-with-advanced-admin-page/database/onlineshop.sql].
+*8.* after creating database name click on import.
 
-10. after importing successfully.
+*9.* browse the file in directory[online-shopping-system-with-advanced-admin-page/database/onlineshop.sql].
 
-11. open any browser and type http://localhost/online-shopping-system-with-advanced-admin-page-master.
+*10.* after importing successfully.
 
-12. first register and then login
+*11.* open any browser and type http://localhost/online-shopping-system-with-advanced-admin-page-master.
 
-13. admin login details  Email=admin@gmail.com or username = admin and Password=123456789.
+*12.* first register and then login
+
+*13.* admin login details  Email=admin@gmail.com or username = admin and Password=123456789.
 
 ## If you like my project 
 Bye me Cup of coffee
