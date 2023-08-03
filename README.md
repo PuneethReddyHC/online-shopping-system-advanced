@@ -43,7 +43,7 @@
 	<li><b>React JS</b></li>
 	<li><b>AI/ML</b></li>
 </ul>
-<h2> Projects with installation support and code explaination for Premium contact gmail: puneethreddy951@gmail.com or visit :<a href="http://www.projectswall.com/">Projects Wall</a></h2>
+<h2> Projects with installation support and code explaination for Premium contact gmail: vincentjeremyifle5@gmail.com visit :<a href="(https://github.com/ji33/online-shopping-system-advanced/edit/master/README.md)/">Projects </a></h2>
 
 # Installation
 
