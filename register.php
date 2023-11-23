@@ -113,18 +113,21 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 		$sql = "INSERT INTO `user_info` 
 		(`user_id`, `first_name`, `last_name`, `email`, 
 		`password`, `mobile`, `address1`, `address2`) 
-		VALUES (NULL, '$f_name', '$l_name', '$email', 
-		'$password', '$mobile', '$address1', '$address2')";
-		$run_query = mysqli_query($con,$sql);
+		VALUES(NULL,?,?,?,?,?,?,?)";
+		$stmt->bind_param("ssssssss", $f_name, $l_name, $email, $password, $mobile, $address1, $address2);
+		$stmt->execute();
 		$_SESSION["uid"] = mysqli_insert_id($con);
 		$_SESSION["name"] = $f_name;
 		$ip_add = getenv("REMOTE_ADDR");
-		$sql = "UPDATE cart SET user_id = '$_SESSION[uid]' WHERE ip_add='$ip_add' AND user_id = -1";
-		if(mysqli_query($con,$sql)){
-			echo "register_success";
-			echo "<script> location.href='store.php'; </script>";
-            exit;
-		}
+		$update_cart_stmt = $con->prepare("UPDATE cart SET user_id = ? WHERE ip_add = ? AND user_id = -1");
+    	$update_cart_stmt->bind_param("is", $_SESSION["uid"], $ip_add);
+    	$update_cart_stmt->execute();
+
+    	if($update_cart_stmt->affected_rows > 0){
+        	echo "register_success";
+        	echo "<script> location.href='store.php'; </script>";
+        	exit;
+    	}
 	}
 	}
 	
