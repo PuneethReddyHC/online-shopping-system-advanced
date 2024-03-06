@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        ssh -i $HOME/.ssh/${ssh_key} root@${staging_server} -o StrictHostKeyChecking=no
+                        ssh -i $HOME ${ssh_key} root@${staging_server} -o StrictHostKeyChecking=no
                         echo "welcome"
                     '''
                 }
