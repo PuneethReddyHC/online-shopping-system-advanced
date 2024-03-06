@@ -2,8 +2,18 @@ pipeline{
     agent any
     environment{
         staging_server="54.80.188.48"
+        ssh_key=credentials('pemkey')
     }
     stages{
+        stage('Remote server login'){
+            steps{
+                sh '''
+                   ssh -i ~/.ssh/${ssh_key} root@${staging_server} -o StrictHostKeyChecking=no
+                   echo "welcome"
+                '''
+            }
+
+            stages{
         stage('Deploy to Remote'){
             steps{
                 sh '''
@@ -13,7 +23,6 @@ pipeline{
                         scp -r ${WORKSPACE}${fil} root@${staging_server}:/var/www/html/ecomdemo${fil}
                     done
                 '''
-            }
         }
     }
 }
