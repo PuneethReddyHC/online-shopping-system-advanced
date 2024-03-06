@@ -12,8 +12,6 @@ pipeline{
                    echo "welcome"
                 '''
             }
-
-            stages{
         stage('Deploy to Remote'){
             steps{
                 sh '''
@@ -26,4 +24,4 @@ pipeline{
         }
     }
 }
-}
+
