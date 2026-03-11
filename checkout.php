@@ -112,6 +112,39 @@ span.price {
 			$query = mysqli_query($con,$sql);
 			$row=mysqli_fetch_array($query);
 		
+		// SECURITY FIX: Fetch cart items directly from database instead of trusting POST data
+		$user_id = $_SESSION["uid"];
+		$sql_cart = "SELECT a.product_id, a.product_title, a.product_price, b.qty 
+					 FROM products a 
+					 INNER JOIN cart b ON a.product_id = b.p_id 
+					 WHERE b.user_id = ?";
+		$stmt_cart = mysqli_prepare($con, $sql_cart);
+		if ($stmt_cart) {
+			mysqli_stmt_bind_param($stmt_cart, "i", $user_id);
+			mysqli_stmt_execute($stmt_cart);
+			$result_cart = mysqli_stmt_get_result($stmt_cart);
+			
+			$cart_items = array();
+			$total = 0;
+			$total_count = 0;
+			
+			while ($cart_row = mysqli_fetch_assoc($result_cart)) {
+				// Validate quantity is positive
+				$qty = (int)$cart_row['qty'];
+				if ($qty > 0 && $qty <= 100) { // Reasonable max quantity
+					$cart_items[] = $cart_row;
+					$total += $cart_row['product_price'] * $qty;
+					$total_count++;
+				}
+			}
+			mysqli_stmt_close($stmt_cart);
+			
+			// If cart is empty, redirect back to cart
+			if ($total_count == 0) {
+				echo "<script>alert('Your cart is empty!'); window.location.href='cart.php';</script>";
+				exit();
+			}
+			
 		echo'
 			<div class="col-75">
 				<div class="container-checkout">
@@ -178,22 +211,18 @@ span.price {
 					</div>
 					<label><input type="CHECKBOX" name="q" class="roomselect" value="conform" required> Shipping address same as billing
 					</label>';
-					$i=1;
-					$total=0;
-					$total_count=$_POST['total_count'];
-					while($i<=$total_count){
-						$item_name_ = $_POST['item_name_'.$i];
-						$amount_ = $_POST['amount_'.$i];
-						$quantity_ = $_POST['quantity_'.$i];
-						$total=$total+$amount_ ;
-						$sql = "SELECT product_id FROM products WHERE product_title='$item_name_'";
-						$query = mysqli_query($con,$sql);
-						$row=mysqli_fetch_array($query);
-						$product_id=$row["product_id"];
+					
+					// SECURITY FIX: Use validated cart data from database
+					$i = 1;
+					foreach ($cart_items as $item) {
+						$product_id = (int)$item['product_id'];
+						$product_price = (float)$item['product_price'];
+						$qty = (int)$item['qty'];
+						
 						echo "	
 						<input type='hidden' name='prod_id_$i' value='$product_id'>
-						<input type='hidden' name='prod_price_$i' value='$amount_'>
-						<input type='hidden' name='prod_qty_$i' value='$quantity_'>
+						<input type='hidden' name='prod_price_$i' value='$product_price'>
+						<input type='hidden' name='prod_qty_$i' value='$qty'>
 						";
 						$i++;
 					}
@@ -207,6 +236,10 @@ span.price {
 				</div>
 			</div>
 			';
+		} else {
+			echo "<script>alert('Error loading cart. Please try again.'); window.location.href='cart.php';</script>";
+			exit();
+		}
 		}else{
 			echo"<script>window.location.href = 'cart.php'</script>";
 		}
@@ -216,60 +249,64 @@ span.price {
 				<div class="container-checkout">
 				
 				<?php
-				if (isset($_POST["cmd"])) {
-				
-					$user_id = $_POST['custom'];
+				// SECURITY FIX: Display cart from database, not POST data
+				if (isset($_SESSION["uid"])) {
+					$user_id = $_SESSION["uid"];
 					
-					
-					$i=1;
-					echo
-					"
-					<h4>Cart 
-					<span class='price' style='color:black'>
-					<i class='fa fa-shopping-cart'></i> 
-					<b>$total_count</b>
-					</span>
-				</h4>
+					$sql_cart_display = "SELECT a.product_id, a.product_title, a.product_price, b.qty 
+									 FROM products a 
+									 INNER JOIN cart b ON a.product_id = b.p_id 
+									 WHERE b.user_id = ?";
+					$stmt_cart_display = mysqli_prepare($con, $sql_cart_display);
+					if ($stmt_cart_display) {
+						mysqli_stmt_bind_param($stmt_cart_display, "i", $user_id);
+						mysqli_stmt_execute($stmt_cart_display);
+						$result_cart_display = mysqli_stmt_get_result($stmt_cart_display);
+						
+						if (mysqli_num_rows($result_cart_display) > 0) {
+							$display_total = 0;
+							$item_count = 0;
+							
+							echo "
+							<h4>Cart 
+							<span class='price' style='color:black'>
+							<i class='fa fa-shopping-cart'></i> 
+							<b>".mysqli_num_rows($result_cart_display)."</b>
+							</span>
+						</h4>
 
-					<table class='table table-condensed'>
-					<thead><tr>
-					<th >no</th>
-					<th >product title</th>
-					<th >	qty	</th>
-					<th >	amount</th></tr>
-					</thead>
-					<tbody>
-					";
-					$total=0;
-					while($i<=$total_count){
-						$item_name_ = $_POST['item_name_'.$i];
-						
-						$item_number_ = $_POST['item_number_'.$i];
-						
-						$amount_ = $_POST['amount_'.$i];
-						
-						$quantity_ = $_POST['quantity_'.$i];
-						$total=$total+$amount_ ;
-						$sql = "SELECT product_id FROM products WHERE product_title='$item_name_'";
-						$query = mysqli_query($con,$sql);
-						$row=mysqli_fetch_array($query);
-						$product_id=$row["product_id"];
-					
-						echo "	
+							<table class='table table-condensed'>
+							<thead><tr>
+							<th >no</th>
+							<th >product title</th>
+							<th >	qty	</th>
+							<th >	amount</th></tr>
+							</thead>
+							<tbody>
+							";
+							
+							$i = 1;
+							while ($cart_row_display = mysqli_fetch_assoc($result_cart_display)) {
+								$item_price = (float)$cart_row_display['product_price'];
+								$item_qty = (int)$cart_row_display['qty'];
+								$item_subtotal = $item_price * $item_qty;
+								$display_total += $item_subtotal;
+								$item_count++;
+								
+								echo "	
+								<tr><td><p>$i</p></td><td><p>".htmlspecialchars($cart_row_display['product_title'])."</p></td><td ><p>$item_qty</p></td><td ><p>$".number_format($item_subtotal, 2)."</p></td></tr>";
+								$i++;
+							}
 
-						<tr><td><p>$item_number_</p></td><td><p>$item_name_</p></td><td ><p>$quantity_</p></td><td ><p>$amount_</p></td></tr>";
-						
-						$i++;
+							echo "
+							</tbody>
+							</table>
+							<hr>
+							
+							<h3>total<span class='price' style='color:black'><b>$".number_format($display_total, 2)."</b></span></h3>";
+						}
+						mysqli_stmt_close($stmt_cart_display);
 					}
-
-				echo"
-
-				</tbody>
-				</table>
-				<hr>
-				
-				<h3>total<span class='price' style='color:black'><b>$$total</b></span></h3>";
-					
 				}
 				?>
 				</div>
