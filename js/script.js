@@ -1,62 +1,72 @@
-$(function() {
+$(function () {
+    // Cache DOM elements
+    const owner = $('#owner');
+    const cardNumber = $('#cardNumber');
+    const cardNumberField = $('#card-number-field');
+    const CVV = $("#cvv");
+    const mastercard = $("#mastercard");
+    const confirmButton = $('#confirm-purchase');
+    const visa = $("#visa");
+    const amex = $("#amex");
 
-    var owner = $('#owner');
-    var cardNumber = $('#cardNumber');
-    var cardNumberField = $('#card-number-field');
-    var CVV = $("#cvv");
-    var mastercard = $("#mastercard");
-    var confirmButton = $('#confirm-purchase');
-    var visa = $("#visa");
-    var amex = $("#amex");
-
-    // Use the payform library to format and validate
-    // the payment fields.
-
+    // Format card number and CVV using the payform library
     cardNumber.payform('formatCardNumber');
     CVV.payform('formatCardCVC');
 
-
-    cardNumber.keyup(function() {
-
+    // Card number input keyup event handler
+    cardNumber.on('keyup', function () {
+        // Reset card logos
         amex.removeClass('transparent');
         visa.removeClass('transparent');
         mastercard.removeClass('transparent');
 
-        if ($.payform.validateCardNumber(cardNumber.val()) == false) {
-            cardNumberField.addClass('has-error');
+        // Validate card number
+        const cardNum = cardNumber.val();
+        if (!$.payform.validateCardNumber(cardNum)) {
+            cardNumberField.addClass('has-error').removeClass('has-success');
         } else {
-            cardNumberField.removeClass('has-error');
-            cardNumberField.addClass('has-success');
+            cardNumberField.removeClass('has-error').addClass('has-success');
         }
 
-        if ($.payform.parseCardType(cardNumber.val()) == 'visa') {
-            mastercard.addClass('transparent');
-            amex.addClass('transparent');
-        } else if ($.payform.parseCardType(cardNumber.val()) == 'amex') {
-            mastercard.addClass('transparent');
-            visa.addClass('transparent');
-        } else if ($.payform.parseCardType(cardNumber.val()) == 'mastercard') {
-            amex.addClass('transparent');
-            visa.addClass('transparent');
+        // Detect and highlight card type
+        const cardType = $.payform.parseCardType(cardNum);
+        switch (cardType) {
+            case 'visa':
+                mastercard.addClass('transparent');
+                amex.addClass('transparent');
+                break;
+            case 'amex':
+                mastercard.addClass('transparent');
+                visa.addClass('transparent');
+                break;
+            case 'mastercard':
+                amex.addClass('transparent');
+                visa.addClass('transparent');
+                break;
+            default:
+                // No action needed for unknown or unsupported card types
+                break;
         }
     });
 
-    confirmButton.click(function(e) {
-
+    // Confirm purchase button click event handler
+    confirmButton.on('click', function (e) {
         e.preventDefault();
 
-        var isCardValid = $.payform.validateCardNumber(cardNumber.val());
-        var isCvvValid = $.payform.validateCardCVC(CVV.val());
+        const isCardValid = $.payform.validateCardNumber(cardNumber.val());
+        const isCvvValid = $.payform.validateCardCVC(CVV.val());
 
-        if(owner.val().length < 5){
-            alert("Wrong owner name");
+        // Validate form inputs
+        if (owner.val().length < 5) {
+            alert("Invalid owner name");
         } else if (!isCardValid) {
-            alert("Wrong card number");
+            alert("Invalid card number");
         } else if (!isCvvValid) {
-            alert("Wrong CVV");
+            alert("Invalid CVV");
         } else {
-            // Everything is correct. Add your form submission code here.
-            alert("Everything is correct");
+            // Form validation successful
+            alert("Payment details are valid. Proceeding with submission...");
+            // Add form submission logic here (e.g., form.submit())
         }
     });
 });
