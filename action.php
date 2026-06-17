@@ -80,35 +80,39 @@ if(isset($_POST["brand"])){
 	}
 }
 if(isset($_POST["page"])){
-	$cid = $_POST["cid"];
-	$sql = "SELECT * FROM products Where product_cat='$cid'";
-	$run_query = mysqli_query($con,$sql);
+	$cid = (int) $_POST["cid"];
+	$stmt = $con->prepare("SELECT * FROM products WHERE product_cat=?");
+	$stmt->bind_param("i", $cid);
+	$stmt->execute();
+	$run_query = $stmt->get_result();
 	$count = mysqli_num_rows($run_query);
 	$pageno = ceil($count/9);
 	for($i=1;$i<=$pageno;$i++){
 		echo "
 			<li><a href='#product-row' page='$i' id='page' cid='$cid'  class='active'>$i</a></li>
-            
-            
+
+
 		";
 	}
 }
 if(isset($_POST["getProduct"])){
 	$limit = 9;
 	if(isset($_POST["setPage"])){
-		$pageno = $_POST["pageNumber"];
+		$pageno = (int) $_POST["pageNumber"];
 		$start = ($pageno * $limit) - $limit;
 	}else{
 		$start = 0;
 	}
 	if(isset($_POST["cid"])){
-		$cat_id = $_POST["cid"];
+		$cat_id = (int) $_POST["cid"];
 	}else{
-		$cat_id = $_POST["cat_id"];
+		$cat_id = (int) $_POST["cat_id"];
 	}
-	
-	$product_query = "SELECT * FROM products,categories WHERE product_cat = '$cat_id' AND product_cat=cat_id LIMIT $start,$limit";
-	$run_query = mysqli_query($con,$product_query);
+
+	$stmt = $con->prepare("SELECT * FROM products,categories WHERE product_cat = ? AND product_cat=cat_id LIMIT ?,?");
+	$stmt->bind_param("iii", $cat_id, $start, $limit);
+	$stmt->execute();
+	$run_query = $stmt->get_result();
 	if(mysqli_num_rows($run_query) > 0){
 		while($row = mysqli_fetch_array($run_query)){
 			$pro_id    = $row['product_id'];
