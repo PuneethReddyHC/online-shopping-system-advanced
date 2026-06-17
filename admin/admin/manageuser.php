@@ -4,7 +4,7 @@ session_start();
 include("../../db.php");
 if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
 {
-$user_id=$_GET['user_id'];
+$user_id = (int) $_GET['user_id'];
 
 /*this is delet quer*/
 mysqli_query($con,"delete from user_info where user_id='$user_id'")or die("query is incorrect...");
