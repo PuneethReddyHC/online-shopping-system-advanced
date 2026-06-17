@@ -111,7 +111,7 @@ if(isset($_POST["review_action"])){
                     echo '
                     <li>
                         <div class="review-heading">
-                            <h5 class="name">'.$name.'</h5>
+                            <h5 class="name">'.htmlspecialchars($name, ENT_QUOTES, 'UTF-8').'</h5>
                             <p class="date">'.$date.'</p>
                             
                             <div class="review-rating">';
@@ -131,7 +131,7 @@ if(isset($_POST["review_action"])){
                             echo'	</div>
                     </div>
                         <div class="review-body">
-                            <p>'.$review.'</p>
+                            <p>'.htmlspecialchars($review, ENT_QUOTES, 'UTF-8').'</p>
                         </div>
                     </li>
 
