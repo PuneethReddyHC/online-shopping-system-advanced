@@ -13,12 +13,12 @@ if (isset($_POST['re_password']))
   $password_query = mysqli_query($con,"select * from admin_info where admin_email='$email'");
   $password_row = mysqli_fetch_array($password_query);
   $database_password = $password_row['admin_password'];
-  if ($database_password == $op)
+  if ($database_password === $op)
     {
-    if ($new_pass == $re_pass)
+    if ($new_pass === $re_pass)
       {
         $pass = md5($re_pass);
-      $update_pwd = mysqli_query($con,"UPDATE admin_info set admin_password='$pass' where admin_id='6'");
+      $update_pwd = mysqli_query($con,"UPDATE admin_info set admin_password='$pass' where admin_email='$email'");
       echo "<script>alert('Update Sucessfully'); </script>";
       }
       else
