@@ -4,12 +4,13 @@ include("../../db.php");
 error_reporting(0);
 if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
 {
-$product_id=$_GET['product_id'];
+$product_id = (int) $_GET['product_id'];
 ///////picture delete/////////
 $result=mysqli_query($con,"select product_image from products where product_id='$product_id'")
 or die("query is incorrect...");
 
 list($picture)=mysqli_fetch_array($result);
+$picture = basename($picture);
 $path="../product_images/$picture";
 
 if(file_exists($path)==true)
