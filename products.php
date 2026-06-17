@@ -1,6 +1,6 @@
 <?php
 include 'header.php';
-$cat_id = $_GET['cat_id'];
+$cat_id = htmlspecialchars($_GET['cat_id'], ENT_QUOTES, 'UTF-8');
 ?>
      
       <div class="main main-raised"> 
@@ -88,7 +88,7 @@ $cat_id = $_GET['cat_id'];
 						<div class="col-md-12 col-xs-12" id="product_msg">
 					</div>
 							<!-- product -->
-							<div id="get_product" cid=<?php echo "$cat_id"; ?>>
+							<div id="get_product" cid="<?php echo $cat_id; ?>">
 							<!--Here we get product jquery Ajax Request-->
 						</div>
 							
@@ -99,7 +99,7 @@ $cat_id = $_GET['cat_id'];
 						<!-- store bottom filter -->
 						<div class="store-filter clearfix">
 							<span class="store-qty">Showing 20-100 products</span>
-							<ul class="store-pagination" id="pageno" cid=<?php echo "$cat_id"; ?>>
+							<ul class="store-pagination" id="pageno" cid="<?php echo $cat_id; ?>">
 								<li ><a class="active" href="#aside">1</a></li>
 								
 								<li><a href="#"><i class="fa fa-angle-right"></i></a></li>

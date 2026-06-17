@@ -57,7 +57,7 @@ include "header.php";
 					
 					<?php 
 								include 'db.php';
-								$product_id = $_GET['p'];
+								$product_id = (int) $_GET['p'];
 								
 								$sql = " SELECT * FROM products AS P,categories AS C WHERE P.product_cat = C.cat_id  AND P.product_id = '$product_id'";
 								if (!$con) {
@@ -201,7 +201,7 @@ include "header.php";
 								<li><a data-toggle="tab" href="#tab2">Details</a></li>
 								<?php
 												include 'db.php';
-												$product_id = $_GET['p'];
+												$product_id = (int) $_GET['p'];
 									
 												$product_query = "SELECT COUNT(*) AS count FROM reviews WHERE product_id='$product_id'";
 												$run_query = mysqli_query($con,$product_query);
@@ -248,7 +248,7 @@ include "header.php";
 													<input class="input" type="text" name="name" placeholder="Your Name" required>
 													<input class="input" type="email" name="email" placeholder="Your Email" required>
 													<?php 
-														$product_id = $_GET['p'];
+														$product_id = (int) $_GET['p'];
 														echo'<input  name="product_id" value="'.$product_id.'" hidden required>'
 													?>
 													
@@ -299,7 +299,7 @@ include "header.php";
                     
 								<?php
                     include 'db.php';
-								$product_id = $_GET['p'];
+								$product_id = (int) $_GET['p'];
                     
 					$product_query = "SELECT * FROM products,categories WHERE product_cat=cat_id AND product_id BETWEEN $product_id AND $product_id+3";
                 $run_query = mysqli_query($con,$product_query);
