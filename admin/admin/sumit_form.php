@@ -1,5 +1,10 @@
 <?php
-$link=$_REQUEST['success'];
+session_start();
+if (!isset($_SESSION['admin_name'])) {
+    header('Location: ../login.php');
+    exit;
+}
+$link = htmlspecialchars($_REQUEST['success'], ENT_QUOTES, 'UTF-8');
 ?>
 <html>
 <head>
@@ -12,7 +17,7 @@ function myfunction()
 </head>
 <body onLoad="myfunction()">
 <form action="index.php" method="post" id="myform">
-	<input hidden="" type="text" name="success" value="<?php echo"$link";?>">
+	<input hidden="" type="text" name="success" value="<?php echo $link; ?>">
     <button hidden="" type="submit" id="success" data-modal="success" name="success" value="success"></button>
 </form>
 
